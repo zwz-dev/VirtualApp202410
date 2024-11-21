@@ -4,10 +4,15 @@
 
 #### UPDATA
 **1. Supports Android 4.0 - 15.0**
+
 **2. Resolves antivirus detection issues in major app stores**
+
 **3. More stable Hook framework**
+
 **4. Supports Xposed**
+
 **5. Supports simulation of various physical parameters of mobile devices**
+
 **6. Support real-money gambling games to be listed on Google Play in the form of A/B packages.**
 
 
