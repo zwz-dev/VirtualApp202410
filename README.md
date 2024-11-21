@@ -1,4 +1,4 @@
-# VirtualApp2022
+# VirtualApp202410
 
 #### Supports Google Play publishing with A/B packages. The B-side code is downloaded from the cloud, completely resolving Google Play's code review issues.
 
