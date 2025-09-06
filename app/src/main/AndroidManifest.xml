@@ -13,8 +13,8 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/vxp"
-        android:theme="@style/LauncherTheme"
-        tools:replace="android:icon,android:label">
+        android:theme="@style/AppTheme"
+        tools:replace="android:theme,android:icon,android:label">
 
         <meta-data
             android:name="android.max_aspect"

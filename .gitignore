@@ -1,0 +1,7 @@
+/.gradle/
+/.idea/
+/.gradle/
+/app/build/
+/build/
+/launcher/build/
+/lib/build/

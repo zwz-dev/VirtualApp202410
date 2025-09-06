@@ -166,7 +166,8 @@ public class PreviewItemManager {
     }
 
     private void drawPreviewItem(Canvas canvas, PreviewItemDrawingParams params) {
-        canvas.save(Canvas.MATRIX_SAVE_FLAG);
+//        canvas.save();
+        canvas.save();
         canvas.translate(params.transX, params.transY);
         canvas.scale(params.scale, params.scale);
         Drawable d = params.drawable;

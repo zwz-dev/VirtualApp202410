@@ -1,29 +1,43 @@
 buildscript {
     repositories {
         mavenCentral()
-        jcenter()
+        // jcenter()
         google()
+        maven {
+            url 'https://maven.aliyun.com/repository/public'
+        }
+        maven { url 'https://developer.huawei.com/repo/' }
+        maven { url 'https://jitpack.io' }
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+        maven { url 'https://maven.aliyun.com/nexus/content/groups/public' }
+        maven { url 'https://repo1.maven.org/maven2/' }
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.2.1'
-        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.6'
+        classpath 'com.android.tools.build:gradle:7.3.0'
+        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.19'
     }
 }
 
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.protobuf'
+apply plugin: 'com.google.osdetector'
 
 android {
     compileSdkVersion 30
     buildToolsVersion '30.0.0'
 
     defaultConfig {
+        minSdkVersion 21
         targetSdkVersion 30
         versionCode 30907
         versionName "3.9"
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary = true
+        }
     }
 
     lintOptions {
@@ -49,7 +63,7 @@ android {
                     'proguard.flags'
         }
     }
-
+    flavorDimensions 'main'
     productFlavors {
         aosp {
             applicationId 'amirz.rootless.nexuslauncher'
@@ -105,6 +119,19 @@ android {
             manifest.srcFile "tests/AndroidManifest.xml"
         }
     }
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            output.processManifest.doLast {
+                // 输出合并后的清单位置
+//                def manifestOutFile = output.processManifest.manifestOutputFile
+//                println "Manifest is at ${manifestOutFile}"
+//
+//                // 输出合并报告
+//                def mergeReport = output.processManifest.mergeReportFile
+//                println "Merge report is at ${mergeReport}"
+            }
+        }
+    }
 }
 
 repositories {
@@ -115,7 +142,6 @@ repositories {
 
 final String SUPPORT_LIBS_VERSION = '28.0.0'
 dependencies {
-    implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support:support-compat:28.0.0'
     implementation 'com.android.support:support-core-utils:28.0.0'
@@ -137,8 +163,14 @@ dependencies {
 protobuf {
     // Configure the protoc executable
     protoc {
-        artifact = 'com.google.protobuf:protoc:3.0.0-alpha-3'
-
+//        artifact = 'com.google.protobuf:protoc:3.0.0-alpha-3'
+//        artifact = 'com.google.protobuf:protoc:3.21.12'
+// 根据您的平台选择合适的版本
+        if (osdetector.os == "osx") {
+            artifact = 'com.google.protobuf:protoc:3.0.0-alpha-3:osx-x86_64'
+        } else {
+            artifact = 'com.google.protobuf:protoc:3.0.0-alpha-3'
+        }
         generateProtoTasks {
             all().each { task ->
                 task.builtins {
