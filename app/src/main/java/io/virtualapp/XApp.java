@@ -29,9 +29,9 @@ public class XApp extends Application {
     protected void attachBaseContext(Context base) {
         gApp = this;
         super.attachBaseContext(base);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            NativeEngine.disableJit(Build.VERSION.SDK_INT);
-        }
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+//            NativeEngine.disableJit(Build.VERSION.SDK_INT);
+//        }
         VASettings.ENABLE_IO_REDIRECT = true;
         VASettings.ENABLE_INNER_SHORTCUT = false;
         try {

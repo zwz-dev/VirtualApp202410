@@ -236,19 +236,19 @@ public class AppManageActivity extends VActivity {
     }
 
     private void showUninstallDialog(AppManageInfo item, CharSequence name) {
-        AlertDialog alertDialog = new AlertDialog.Builder(AppManageActivity.this)
-                .setTitle(com.android.launcher3.R.string.home_menu_delete_title)
-                .setMessage(getResources().getString(com.android.launcher3.R.string.home_menu_delete_content, name))
-                .setPositiveButton(android.R.string.yes, (dialog, which) -> {
-                    VirtualCore.get().uninstallPackageAsUser(item.pkgName, item.userId);
-                    loadAsync();
-                })
-                .setNegativeButton(android.R.string.no, null)
-                .create();
-        try {
-            alertDialog.show();
-        } catch (Throwable ignored) {
-        }
+//        AlertDialog alertDialog = new AlertDialog.Builder(AppManageActivity.this)
+//                .setTitle(com.android.launcher3.R.string.home_menu_delete_title)
+//                .setMessage(getResources().getString(com.android.launcher3.R.string.home_menu_delete_content, name))
+//                .setPositiveButton(android.R.string.yes, (dialog, which) -> {
+//                    VirtualCore.get().uninstallPackageAsUser(item.pkgName, item.userId);
+//                    loadAsync();
+//                })
+//                .setNegativeButton(android.R.string.no, null)
+//                .create();
+//        try {
+//            alertDialog.show();
+//        } catch (Throwable ignored) {
+//        }
     }
 
     private void showStorageRedirectDialog(AppManageInfo item) {
